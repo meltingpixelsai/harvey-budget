@@ -10,12 +10,13 @@ export function registerDiscoveryRoutes(app: Hono): void {
     });
   });
 
-  app.get("/.well-known/agent-card.json", (c) => {
-    return c.json(AGENT_CARD, 200, {
+  const agentCardHandler = (c: any) =>
+    c.json(AGENT_CARD, 200, {
       "Cache-Control": "public, max-age=3600",
       "Access-Control-Allow-Origin": "*",
     });
-  });
+  app.get("/.well-known/agent-card.json", agentCardHandler);
+  app.get("/.well-known/agent.json", agentCardHandler);
 
   app.get("/.well-known/mcp.json", (c) => {
     return c.json(MCP_CARD, 200, {
@@ -59,19 +60,31 @@ const AGENT_CARD = {
   name: "Harvey Budget",
   description:
     "MCP server for AI agent spending management. Budget tracking, spend approval, ROI analysis, and intelligent recommendations. Pure logic with no LLM dependency. Pay per call with USDC via x402.",
-  url: "https://budget.rugslayer.com/mcp",
   version: "1.0.0",
+  supportedInterfaces: [
+    {
+      url: "https://budget.rugslayer.com/mcp",
+      protocolBinding: "HTTP+JSON",
+      protocolVersion: "0.3",
+    },
+  ],
   provider: {
     organization: "MeltingPixels",
     url: "https://rugslayer.com",
   },
+  iconUrl: "https://rugslayer.com/icon.svg",
   capabilities: {
     streaming: false,
     pushNotifications: false,
     stateTransitionHistory: false,
   },
-  authentication: {
-    schemes: ["x402"],
+  securitySchemes: {
+    x402: {
+      httpSecurityScheme: {
+        scheme: "x402",
+        bearerFormat: "USDC micropayment on Solana",
+      },
+    },
   },
   defaultInputModes: ["application/json"],
   defaultOutputModes: ["application/json"],
