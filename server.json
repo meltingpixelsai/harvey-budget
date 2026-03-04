@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.meltingpixelsai/harvey-budget",
-  "description": "Agent spending management - budget tracking, ROI analysis, and intelligent spend approval. Pay-per-call USDC.",
+  "description": "Agent spending management with budget tracking, ROI analysis, and spend approval.",
   "repository": {
     "url": "https://github.com/meltingpixelsai/harvey-budget",
     "source": "github"
