@@ -1,0 +1,37 @@
+{
+  "name": "@meltingpixels/harvey-budget",
+  "version": "1.0.0",
+  "description": "x402-paid MCP server for agent spending management. Budget tracking, ROI analysis, and intelligent spend approval. Pay-per-call USDC on Solana.",
+  "type": "module",
+  "mcpName": "io.github.meltingpixelsai/harvey-budget",
+  "keywords": ["mcp", "x402", "usdc", "ai-agents", "budget", "spending", "roi", "agent-commerce"],
+  "author": "MeltingPixels <jeremy@meltingpixels.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meltingpixelsai/harvey-budget"
+  },
+  "homepage": "https://budget.rugslayer.com",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.5",
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "@supabase/supabase-js": "^2.49.4",
+    "dotenv": "^16.4.7",
+    "hono": "^4.9.6",
+    "mcp-handler": "^1.0.2",
+    "mcpay": "^0.1.17",
+    "x402": "^0.6.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.meltingpixelsai/harvey-budget",
+  "description": "Agent spending management - budget tracking, ROI analysis, and intelligent spend approval. Pay-per-call USDC.",
+  "repository": {
+    "url": "https://github.com/meltingpixelsai/harvey-budget",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@meltingpixels/harvey-budget",
+      "version": "1.0.0",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://budget.rugslayer.com/mcp"
+      },
+      "environmentVariables": [
+        {
+          "description": "Supabase URL for budget database",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": false,
+          "name": "SUPABASE_URL"
+        },
+        {
+          "description": "Supabase service role key",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true,
+          "name": "SUPABASE_SERVICE_ROLE_KEY"
+        },
+        {
+          "description": "Solana wallet address for receiving USDC payments",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "PAYMENT_WALLET"
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "x402": {
+      "network": "solana",
+      "currency": "USDC",
+      "facilitator": "https://facilitator.payai.network",
+      "tools": {
+        "check_spend": "$0.001",
+        "report_spend": "$0.001",
+        "get_spending_report": "$0.005"
+      },
+      "free_tools": ["list_tools", "health", "register_agent"]
+    }
+  }
+}
